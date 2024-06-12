@@ -3,28 +3,49 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './components/login/login.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatCardModule } from '@angular/material/card';
+
+
+import { AuthService } from './services/auth.service';
 import { EventService } from './services/event.service';
 import { UserService } from './services/user.service';
 import { FeedbackService } from './services/feedback.service';
 import { RegistrationService } from './services/registration.service';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+import { LoginComponent } from './components/login/login.component';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { EventCardComponent } from './components/event-card/event-card.component';
+import { AddEventComponent } from './components/add-event/add-event.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    SidebarComponent,
+    NavbarComponent,
+    HomeComponent,
+    EventCardComponent,
+    AddEventComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatCardModule
   ],
   providers: [
+    AuthService,
     EventService,
     UserService,
     RegistrationService,

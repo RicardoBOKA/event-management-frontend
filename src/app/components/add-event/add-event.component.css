@@ -1,0 +1,53 @@
+/* Centrer le conteneur du formulaire */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Hauteur complète de la vue */
+    padding: 20px;
+  }
+  
+  /* Style du formulaire */
+  form {
+    background: #f7f7f7; /* Couleur de fond légère pour le formulaire */
+    padding: 20px;
+    border-radius: 8px; /* Bordures arrondies */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Ombre légère pour un effet de profondeur */
+    width: 100%;
+    max-width: 500px; /* Largeur maximale du formulaire */
+  }
+  
+  /* Style des éléments de formulaire */
+  input, textarea, button {
+    width: 100%; /* Pleine largeur pour aligner les éléments */
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style des labels */
+  label {
+    display: block; /* Assure que le label est sur une ligne séparée */
+    margin-bottom: 5px;
+  }
+  
+  /* Style du bouton */
+  button {
+    background-color: #4CAF50; /* Couleur verte pour le bouton */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049; /* Légère variation de la couleur au survol */
+  }
+  
+  /* Désactiver le bouton s'il est désactivé */
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  

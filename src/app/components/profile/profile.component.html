@@ -1,0 +1,23 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<div class="profile-container">
+  <div class="profile-content">
+    <h1>User Profile</h1>
+    <div *ngIf="currentUser" class="profile-details">
+      <p><strong>Name:</strong> {{ currentUser.userName }}</p>
+      <p><strong>Email:</strong> {{ currentUser.email }}</p>
+
+      <h2>Your Registrations</h2>
+      <div *ngIf="registrations && registrations.length; else noRegistrations">
+        <div *ngFor="let registration of registrations" class="registration-card">
+          <h3>{{ registration.event.eventName }}</h3>
+          <p><strong>Registration Date:</strong> {{ registration.registrationDate | date:'short' }}</p>
+        </div>
+      </div>
+      <ng-template #noRegistrations>
+        <p>No registrations available.</p>
+      </ng-template>
+    </div>
+  </div>
+</div>

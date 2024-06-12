@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { UserService } from '../../services/user.service';
+// import { UserService } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { env } from '../../../env/env';
 
@@ -20,8 +21,9 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private fb: FormBuilder,
-    private userService: UserService,
+    private authService: AuthService,
     private router: Router
+    // private userService: UserService,
   ) { 
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -33,11 +35,38 @@ export class LoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-
   }
+
+    // Getters for loginForm controls
+    get loginEmail() {
+      return this.loginForm.get('email');
+    }
+  
+    get loginPassword() {
+      return this.loginForm.get('password');
+    }
+  
+    // Getters for signupForm controls
+    get signupName() {
+      return this.signupForm.get('name');
+    }
+  
+    get signupEmail() {
+      return this.signupForm.get('email');
+    }
+  
+    get signupPassword() {
+      return this.signupForm.get('password');
+    }
 
   ngOnInit() {
     // this.initForms();
+    this.signupForm.valueChanges.subscribe(values => {
+      console.log("SingUp form Values:", values);
+    });
+    this.loginForm.valueChanges.subscribe(values => {
+      console.log("Login form Values:", values)
+    })
   }
 
   // initForms() {
@@ -55,11 +84,16 @@ export class LoginComponent implements OnInit {
 
   onLogin() {
     if (this.loginForm.valid) {
-      this.userService.authenticateUser(this.loginForm.value.email, this.loginForm.value.password)
+      console.log();
+      this.authService.login(this.loginForm.value.email, this.loginForm.value.password)
         .subscribe(
-          success => {
-            console.log("Logged in successfully!");
-            this.router.navigate(['/']);  // Redirect to home or dashboard after login
+          user => {
+            if (user) {
+              console.log("Logged in successfully!");
+              this.router.navigate(['/profile']);  // Redirect to profile after login
+            } else {
+              console.error("Login failed");
+            }
           },
           error => {
             // this.errorMessage = "Invalid email or password";
@@ -70,25 +104,44 @@ export class LoginComponent implements OnInit {
   }
   
 
-  onSignup() {
+  onSignup(): void {
     if (this.signupForm.valid) {
-      const signupData = {
-        userName: this.signupForm.value.name, // Assure-toi que les noms correspondent à ton modèle de données et à ton formulaire
-        email: this.signupForm.value.email,
-        password: this.signupForm.value.password
-      };
-      this.userService.createUser(signupData).subscribe(
+      this.authService.signup(
+        this.signupForm.value.name,
+        this.signupForm.value.email,
+        this.signupForm.value.password
+      ).subscribe(
         user => {
           console.log("User created successfully!", user);
-          this.router.navigate(['/']);
+          this.router.navigate(['/profile']);  // Redirect to profile after signup
         },
         error => {
-          // this.errorMessage = "Error signing up";
           console.error('Signup error', error);
         }
       );
     }
   }
+
+  // onSignup() {
+  //   if (this.signupForm.valid) {
+  //     const signupData = {
+  //       userName: this.signupForm.value.name,
+  //       email: this.signupForm.value.email,
+  //       password: this.signupForm.value.password
+  //     };
+  //     this.userService.createUser(signupData).subscribe(
+  //       user => {
+  //         console.log("User created successfully!", user);
+  //         this.router.navigate(['/']);
+  //       },
+  //       error => {
+  //         // this.errorMessage = "Error signing up";
+  //         console.log("Valide ? : ", this.signupForm.valid);
+  //         console.error('Signup error', error);
+  //       }
+  //     );
+  //   }
+  // }
   
   showSignUpPanel() {
     const container = document.getElementById('container');

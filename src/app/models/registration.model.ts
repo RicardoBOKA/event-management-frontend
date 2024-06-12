@@ -1,7 +1,9 @@
+import { User } from "./user.model";
+import { Event } from "./event.model";
+
 export interface Registration {
-    registrationId: string;
-    userId: string;        // Identifiant de l'utilisateur inscrit
-    eventId: string;       // Identifiant de l'événement
-    registrationDate: string;
-  }
-  
+  registrationId: string;
+  user: User;
+  event: Event;
+  registrationDate: string;
+}

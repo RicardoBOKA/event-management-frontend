@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+<div class="form-container">
+  <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+    <div>
+      <h1>
+        <label for="eventName">Event Name:</label>
+      </h1>
+      <input formControlName="eventName" id="eventName" required>
+    </div>
+    <div>
+      <h1>
+        <label for="startEvent">Start Date:</label>
+      </h1>
+      <input type="datetime-local" formControlName="startEvent" id="startEvent" required>
+    </div>
+    <div>
+      <h1>
+        <label for="endEvent">End Date:</label>
+      </h1>
+      <input type="datetime-local" formControlName="endEvent" id="endEvent" required>
+    </div>
+    <div formGroupName="location"> <!-- Ajout d'un group pour la localisation -->
+      <h1>
+        <label>Location:</label>
+      </h1>
+      <div>
+        <label for="addressLine">Address Line:</label>
+        <input formControlName="addressLine" id="addressLine" required>
+      </div>
+      <div>
+        <label for="city">City:</label>
+        <input formControlName="city" id="city" required>
+      </div>
+      <div>
+        <label for="postalCode">Postal Code:</label>
+        <input formControlName="postalCode" id="postalCode" required>
+      </div>
+      <div>
+        <label for="country">Country:</label>
+        <input formControlName="country" id="country" required>
+      </div>
+    </div>
+    <div>
+      <h1>  
+        <label for="description">Description:</label>
+      </h1>
+      <textarea formControlName="description" id="description" required></textarea>
+    </div>
+    <button type="submit" [disabled]="!eventForm.valid">Create Event</button>
+  </form>
+</div>

@@ -1,0 +1,33 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<section class="eventsHeader">
+
+  <div class="slideToggle">
+    </div>
+<!-- [checked]="!listView" -->
+    <h1 id="pageTitle">Event Panel</h1>
+    
+    <button id="createButton" type="button" class="btn btn-outline-success"
+        *ngIf="isLoggedIn()" routerLink="/events/add-event">Create New</button>
+    <button id="loginButton" type="button" class="btn btn-outline-primary"
+        *ngIf="!isLoggedIn()" (click)="redirectToLogin()">Log In to Create Events</button>
+
+
+    <!-- <button id="createButton" type="button" class="btn btn-outline-success" routerLink="/events/add-event">Create New</button> -->
+
+  </section >
+
+<div class="container">
+  <h1>All Events</h1>
+  <div class="events-wrapper">
+    <div *ngIf="events && events.length; else noEvents" class="events-container">
+      <div *ngFor="let event of events">
+        <app-event-card [event]="event"></app-event-card>
+      </div>
+    </div>
+  </div>
+  <ng-template #noEvents>
+    <p class="no-events">No events available.</p>
+  </ng-template>
+</div>
