@@ -1,0 +1,18 @@
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+  
+
+<div class="feedback-container">
+  <h2>Give Feedback for Event</h2>
+  <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="feedback-form">
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea id="comment" formControlName="comment" class="form-control"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="rating">Rating:</label>
+      <input id="rating" type="number" formControlName="rating" min="1" max="5" class="form-control">
+    </div>
+    <button type="submit" [disabled]="!feedbackForm.valid" class="btn btn-primary">Submit Feedback</button>
+  </form>
+</div>

@@ -1,0 +1,46 @@
+
+.event-card {
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+  
+  .event-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  .event-card-avatar {
+    /* background-image: url('default-avatar-url.jpg'); Replace with a default avatar image URL */
+    background-size: cover;
+    border-radius: 50%;
+  }
+  
+  mat-card-title, mat-card-subtitle {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  mat-card-content {
+    font-size: 14px;
+    color: #555;
+  }
+  
+  mat-card-actions {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  button[mat-raised-button] {
+    border-radius: 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .registration-message {
+    margin-top: 10px;
+    font-size: 14px;
+    color: red;
+    text-align: center;
+  }

@@ -1,55 +1,43 @@
 .profile-container {
   display: flex;
   justify-content: center;
-  padding: 20px;
-  background-color: #f9f9f9;
+  align-items: center;
+  height: 100vh;
 }
 
 .profile-content {
   width: 80%;
   max-width: 800px;
-}
-
-.profile-content h1 {
-  font-size: 2.5em;
-  margin-bottom: 20px;
   text-align: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .profile-details {
-  background-color: white;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  text-align: center;
-}
-
-.profile-details p {
-  font-size: 1.2em;
-  margin: 10px 0;
-}
-
-.profile-details h2 {
-  margin-top: 30px;
-  font-size: 2em;
   margin-bottom: 20px;
 }
 
 .registration-card {
-  background-color: #ffffff;
-  margin: 10px 0;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 15px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-.registration-card h3 {
-  margin: 0;
-  font-size: 1.5em;
+button {
+  background-color: #e57373;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
-.registration-card p {
-  margin: 5px 0;
-  font-size: 1.2em;
+button:hover {
+  background-color: #d32f2f;
 }

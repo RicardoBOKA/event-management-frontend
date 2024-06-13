@@ -11,5 +11,9 @@
   </mat-card-content>
   <mat-card-actions>
     <button mat-button (click)="onEventClick()">View Details</button>
+    <button mat-button (click)="registerForEvent()">Register</button>
   </mat-card-actions>
+  <div *ngIf="registrationMessage" class="registration-message">
+    {{ registrationMessage }}
+  </div>
 </mat-card>

@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Registration } from '../models/registration.model';
 import { env } from '../../env/env';
+import { tap } from 'rxjs/operators'; // Import the tap operator
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,8 @@ export class RegistrationService {
 
   constructor(private http: HttpClient) {}
 
-  createRegistration(registration: Registration): Observable<Registration> {
-    return this.http.post<Registration>(this.apiUrl, registration);
+  createRegistration(registrationRequest: { registrationUserId: string, registrationEventId: string }): Observable<Registration> {
+    return this.http.post<Registration>(this.apiUrl, registrationRequest);
   }
 
   cancelRegistration(registrationId: string): Observable<void> {
@@ -31,8 +32,10 @@ export class RegistrationService {
   }
 
   getRegistrationsByUserId(userId: string): Observable<Registration[]> {
-    return this.http.get<Registration[]>(`${this.apiUrl}/user/${userId}`);
-  }
+    return this.http.get<Registration[]>(`${this.apiUrl}/user/${userId}`).pipe(
+      tap(data => console.log('Fetched Registrations:', data)) // Log for debugging
+    );
+  }  
 
   isUserRegistered(userId: string, eventId: string): Observable<boolean> {
     return this.http.get<boolean>(`${this.apiUrl}/check?userId=${userId}&eventId=${eventId}`);

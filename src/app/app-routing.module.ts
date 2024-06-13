@@ -5,12 +5,14 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
+import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'profile', component: ProfileComponent },
-  {path: 'events/add-event', component: AddEventComponent }
+  {path: 'events/add-event', component: AddEventComponent },
+  { path: 'add-feedback/:eventId', component: AddFeedbackComponent },
 ];
 
 @NgModule({

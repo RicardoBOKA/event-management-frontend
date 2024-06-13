@@ -7,8 +7,5 @@ export interface Feedback {
     event: Event;
     comment: string;       // Commentaire du feedback
     rating: number;        // Note attribuée
-
-    // eventId: string       // L'identifiant de l'événement associé
-    // userId: string;        // L'identifiant de l'utilisateur qui donne le feedback
-  }
+}
   

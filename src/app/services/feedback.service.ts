@@ -24,9 +24,11 @@ export class FeedbackService {
     return this.http.get<Feedback[]>(`${this.apiUrl}/user/${userId}`);
   }
 
-  addFeedback(feedback: Feedback): Observable<Feedback> {
-    return this.http.post<Feedback>(this.apiUrl, feedback);
+
+  addFeedback(feedbackRequest: { feedbackUserId: String, feedbackEventId: String, comment: String, rating: Number}): Observable<Feedback> {
+    return this.http.post<Feedback>(this.apiUrl, feedbackRequest);
   }
+
 
   updateFeedback(feedbackId: string, feedback: Feedback): Observable<Feedback> {
     return this.http.put<Feedback>(`${this.apiUrl}/${feedbackId}`, feedback);

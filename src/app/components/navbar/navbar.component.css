@@ -8,8 +8,44 @@
 nav {
   position: relative;
   z-index: 100;
-  /* background: rgb(42, 46, 51); */
+  background: rgb(42, 46, 51);
 }
+
+/* Style général pour la barre de navigation */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Aligner les enfants verticalement */
+    padding: 0 20px;
+}
+
+.navbar-brand {
+    color: #FFFFFF; /* Couleur du texte pour le nom de l'application */
+    font-weight: bold; /* Rend le texte plus épais */
+    font-size: 1.5rem; /* Taille du texte */
+}
+
+.navbar-toggler {
+    border: none; /* Retire la bordure du bouton */
+    background: none; /* Retire le fond par défaut pour la transparence */
+}
+
+/* Container pour les éléments de navigation */
+.collapse.navbar-collapse {
+    display: flex; /* Applique Flexbox */
+    justify-content: flex-end; /* Aligner les éléments à droite */
+    width: 100%; /* Assure que le container prend toute la largeur */
+}
+
+.nav-link:hover {
+    color: #FFFFFF; /* Couleur des liens au survol */
+    text-decoration: none; /* Retire le soulignement au survol */
+}
+
+li {
+  display: inline;
+}
+
 
 .skew1 {
   margin-top: -149px;
