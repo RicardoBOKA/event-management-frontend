@@ -1,46 +1,113 @@
+  /* Espace entre la navbar et les cartes */
+  :host {
+    display: block;
+    padding-top: 70px; /* Ajustez en fonction de la hauteur de votre navbar */
+    margin-bottom: 20px;
+  }
 
-.event-card {
-    max-width: 400px;
-    margin: 20px auto;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: box-shadow 0.3s ease-in-out;
+  /* Style de la carte de l'événement */
+  .event-card {
+    padding: 20px;
+    margin: 10px auto;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    background-color: #ffffff;
   }
-  
-  .event-card:hover {
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-  }
-  
-  .event-card-avatar {
-    /* background-image: url('default-avatar-url.jpg'); Replace with a default avatar image URL */
-    background-size: cover;
-    border-radius: 50%;
-  }
-  
-  mat-card-title, mat-card-subtitle {
-    font-weight: bold;
+
+  /* Titre de l'événement */
+  .event-title {
     color: #333;
+    font-size: 24px;
   }
-  
-  mat-card-content {
+
+  /* Sous-titre et métadonnées */
+  .event-subtitle, .event-meta {
     font-size: 14px;
-    color: #555;
+    color: #999;
+    font-style: italic;
   }
-  
-  mat-card-actions {
+
+  /* Contenu principal de la carte */
+  .event-content {
+    color: #666;
+    font-size: 16px;
+  }
+
+  /* Actions comme les boutons */
+  .event-actions {
     display: flex;
     justify-content: space-between;
+    margin-top: 20px;
   }
-  
-  button[mat-raised-button] {
-    border-radius: 20px;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-  
+
+  /* Messages d'inscription */
   .registration-message {
-    margin-top: 10px;
+    color: rgb(184, 80, 80);
     font-size: 14px;
-    color: red;
-    text-align: center;
+    margin-top: 10px;
   }
+  /* Position et style pour les dates */
+  .event-dates {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 14px;
+    color: #666;
+  }
+
+  /* Séparateur pour plus de clarté entre les dates */
+  .date-separator {
+    margin: 0 5px;
+    color: #bbb; /* Couleur plus claire pour le séparateur */
+  }
+
+  .profile-icon {
+    width: 30px;        /* Taille de l'icône */
+    height: 30px;       /* Taille de l'icône */
+    border-radius: 50%; /* Rend l'icône ronde */
+    object-fit: cover;  /* Assure que l'image couvre bien la zone sans être déformée */
+    margin-right: -10px; /* Chevauche les icônes précédentes */
+    border: 2px solid white; /* Ajoute une bordure pour mieux distinguer les icônes chevauchées */
+  }
+  
+  .more-registrants {
+    font-size: 16px;
+    line-height: 30px; /* Alignement vertical avec les icônes */
+    color: #666;       /* Couleur du texte pour '+x' */
+    background: white; /* Fond pour distinguer le texte si chevauchement */
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 12px;  /* Chevauche l'icône précédente */
+  }
+  
+  
+  .profile-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-right: -10px;
+  }
+  
+  .tooltip {
+    position: absolute;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 6px;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+  
+  .profile-icon-wrapper:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+  }
+  

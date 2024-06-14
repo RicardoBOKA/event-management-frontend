@@ -23,7 +23,6 @@ export class ProfileComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private registrationService: RegistrationService,
-    private eventService: EventService,
     private feedbackService: FeedbackService,
     private router: Router
   ) {}
@@ -47,6 +46,7 @@ export class ProfileComponent implements OnInit {
           console.log('Fetched Registrations:', this.registrations);  // Debugging line
         },
         (error) => {
+          console.log();
           console.error('Error fetching registrations', error);
         }
       );
@@ -69,37 +69,37 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+  isUserOrganizer(eventUserId: string): boolean {
+    return (this.currentUser && eventUserId === this.currentUser.userId)? true : false;
+  }
+  
   redirectToFeedback(eventId: string): void {
     this.router.navigate(['/add-feedback', eventId]);
   }
 
   onFeedbackSubmit(feedbackData: { eventId: string, comment: string, rating: number }): void {
-    this.eventService.getEventById(feedbackData.eventId).subscribe(
-      event => {
-        const feedback: Feedback = {
-          feedbackId: '', // Generate a new UUID or let the backend handle it
-          user: this.currentUser as User, // Assert that currentUser is not null
-          event: event,
-          comment: feedbackData.comment,
-          rating: feedbackData.rating
-        };
-
-        this.feedbackService.addFeedback(feedback).subscribe(
-          () => {
-            console.log(`Feedback for event ${feedbackData.eventId} submitted successfully.`);
-            this.feedbackMessages[feedbackData.eventId] = 'Feedback submitted successfully!';
-          },
-          (error) => {
-            console.error('Error submitting feedback', error);
-            this.feedbackMessages[feedbackData.eventId] = 'Error submitting feedback.';
-          }
-        );
-      },
-      (error) => {
-        console.error('Error fetching event for feedback', error);
-        this.feedbackMessages[feedbackData.eventId] = 'Error fetching event for feedback.';
-      }
-    );
+    if (this.currentUser) {
+      const feedbackRequest = {
+        feedbackUserId: this.currentUser.userId,
+        feedbackEventId: feedbackData.eventId,
+        comment: feedbackData.comment,
+        rating: feedbackData.rating
+      };
+  
+      this.feedbackService.addFeedback(feedbackRequest).subscribe(
+        () => {
+          console.log(`Feedback for event ${feedbackData.eventId} submitted successfully.`);
+          this.feedbackMessages[feedbackData.eventId] = 'Feedback submitted successfully!';
+        },
+        (error) => {
+          console.error('Error submitting feedback', error);
+          this.feedbackMessages[feedbackData.eventId] = 'Error submitting feedback.';
+        }
+      );
+    } else {
+      console.error('Current user is null, unable to submit feedback.');
+      this.feedbackMessages[feedbackData.eventId] = 'You must be logged in to submit feedback.';
+    }
   }
 
 }

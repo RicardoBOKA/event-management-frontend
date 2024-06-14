@@ -1,19 +1,39 @@
-<mat-card>
+<mat-card class="event-card">
+  <span *ngIf="event.user" class="event-meta">Created by: {{ event.user.userName }}</span>
   <mat-card-header>
-    <mat-card-title>{{ event.eventName }}</mat-card-title>
-    <mat-card-subtitle>{{ event.location }}</mat-card-subtitle>
-  </mat-card-header>
-  <img mat-card-image [src]="event" alt="Event Image">
-  <mat-card-content>
-    <p>{{ event.description }}</p>
-    <p><strong>Starts:</strong> {{ event.startEvent | date:'short' }}</p>
-    <p><strong>Ends:</strong> {{ event.endEvent | date:'short' }}</p>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-button (click)="onEventClick()">View Details</button>
-    <button mat-button (click)="registerForEvent()">Register</button>
+    <mat-card-title class="event-title">{{ event.eventName }}</mat-card-title>
+    <mat-card-subtitle class="event-subtitle">{{ event.location }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="event-content">
+      <p>{{ event.description }}</p>
+      </mat-card-content>
+      <mat-card-actions class="event-actions">
+        <div *ngIf="registrationMessage" class="registration-message">{{ registrationMessage }}</div>
+      <button mat-button (click)="registerForEvent()" [hidden]="isRegistered || !isLoggedIn()">Register</button>
+        <div class="event-dates">
+          <span><strong>Starts:</strong> {{ event.startEvent | date:'mediumDate' }}</span>
+          <span class="date-separator">|</span>
+          <span><strong>Ends:</strong> {{ event.endEvent | date:'mediumDate' }}</span>
+        </div>
+        <div class="registrants">
+          <ng-container *ngFor="let registration of registrations; let i = index">
+            <div class="profile-icon-wrapper" *ngIf="i < 3">
+              <img src="/assets/default-profile.jpg" class="profile-icon" alt="Profile image">
+              <span class="tooltip">{{ registration.user.userName }}</span>
+            </div>
+          </ng-container>
+          <span *ngIf="registrations.length > 3" class="more-registrants">+{{ registrations.length - 3 }}</span>
+        </div>
+        
+        
+        <!-- <div class="registran  ts">
+          <h3>Users In:</h3>
+                      <img *ngIf="i < 3" src="/assets/default-profile.jpg" class="profile-icon">
+
+          <ul>
+            <li *ngFor="let registration of registrations">{{ registration.user.userName }}</li>
+          </ul>
+        </div> -->
+    <!-- <button mat-button (click)="onEventClick()">View Details</button> -->
   </mat-card-actions>
-  <div *ngIf="registrationMessage" class="registration-message">
-    {{ registrationMessage }}
-  </div>
 </mat-card>

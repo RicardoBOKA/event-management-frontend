@@ -1,0 +1,24 @@
+[
+    {
+      "userId": "1",
+      "userName": "toto",
+      "email": "toto@mail.com",
+      "password": "password",
+      "profilePictureUrl": "assets/toto.jpg"
+    },
+    {
+      "userId": "2",
+      "userName": "titi",
+      "email": "titi@mail.com",
+      "password": "password",
+      "profilePictureUrl": "assets/titi.jpeg"
+    },
+    {
+      "userId": "3",
+      "userName": "tata",
+      "email": "tata@mail.com",
+      "password": "password",
+      "profilePictureUrl": "assets/tata.jpg"
+    }
+  ]
+  

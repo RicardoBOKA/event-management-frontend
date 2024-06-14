@@ -9,13 +9,15 @@
       <p><strong>Email:</strong> {{ currentUser.email }}</p>
 
       <h2>Your Ongoing Registrations</h2>
-      <div *ngIf="registrations && registrations.length; else noOngoingRegistrations">
-        <div *ngFor="let registration of registrations" class="registration-card">
-          <h3>{{ registration.event.eventName }}</h3>
-          <p><strong>Registration Date:</strong> {{ registration.registrationDate | date:'short' }}</p>
-          <button mat-button (click)="deleteRegistration(registration.registrationId)">Delete Registration</button>
-        </div>
+      <div *ngFor="let registration of registrations" class="registration-card">
+        <h3>{{ registration.event.eventName }}</h3>
+        <p><strong>Registration Date:</strong> {{ registration.registrationDate | date:'short' }}</p>
+        <button mat-button (click)="deleteRegistration(registration.registrationId)">Delete Registration</button>
+        <span *ngIf="isUserOrganizer(registration.event.user.userId)" class="organizer-badge">
+          You organised it
+        </span>
       </div>
+      
       <ng-template #noOngoingRegistrations>
         <p>No ongoing registrations available.</p>
       </ng-template>

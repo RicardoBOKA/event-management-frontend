@@ -12,6 +12,7 @@ import { Registration } from '../../models/registration.model';
 })
 export class EventCardComponent implements OnInit {
   @Input() event!: Event;
+  registrations: Registration[] = []; // To store registrations for the event itSelf
   registrationMessage: string | null = null;
   isRegistered: boolean = false;
 
@@ -21,54 +22,77 @@ export class EventCardComponent implements OnInit {
     private router: Router
   ) { }
 
-  ngOnInit(): void { }
-
-  onEventClick(): void {
-    // Logic for handling event click, e.g., navigation to event details page
-    console.log(`Event clicked: ${this.event.eventName}`);
+  ngOnInit(): void { 
+    this.checkRegistration();
+    this.loadRegistrations();
   }
 
- registerForEvent(): void {
-    const currentUser = this.authService.getCurrentUser();
-    if (currentUser) {
-      if (this.isRegistered) {
-        this.registrationMessage = 'You are already registered for this event';
-        return;
-      }
-      const registrationRequest = {
-        registrationUserId: currentUser.userId,
-        registrationEventId: this.event.eventId
-      };
-      this.registrationService.createRegistration(registrationRequest).subscribe(
-        (response) => {
-          this.registrationMessage = 'Registration successful!';
-          this.isRegistered = true;
+  loadRegistrations(): void {
+    this.registrationService.getRegistrationsByEventId(this.event.eventId)
+      .subscribe({
+        next: (registrations) => {
+          this.registrations = registrations;
         },
-        (error) => {
-          console.error('Error registering for event', error);
-          this.registrationMessage = 'Error registering for event';
+        error: (error) => {
+          console.error('Failed to load registrations', error);
         }
-      );
-    } else {
-      this.registrationMessage = 'You must be logged in to register for an event';
-    }
+      });
   }
+
+  isLoggedIn(): boolean {
+    return this.authService.isLoggedIn();
+  }
+  onEventClick(): void {
+    console.log(`Event clicked: ${this.event.eventName}`);
+    console.log('registrations = ', this.registrations);
+    // this.router.navigate(['/event-details', this.event.eventId]);
+  }
+
+  registerForEvent(): void {
+    const currentUser = this.authService.getCurrentUser();
+    if (!currentUser) {
+      this.registrationMessage = 'You must be logged in to register for an event';
+      return;
+    }
+    if (this.isRegistered) {
+      this.registrationMessage = 'You are already registered for this event';
+      return;
+    }
+    const registrationRequest = {
+      registrationUserId: currentUser.userId,
+      registrationEventId: this.event.eventId
+    };
+    this.registrationService.createRegistration(registrationRequest).subscribe(
+      () => {
+        this.registrationMessage = 'Registration successful!';
+        this.isRegistered = true;
+        this.loadRegistrations();  // Reload registrations to update the list
+      },
+      (error) => {
+        console.error('Error registering for event', error);
+        this.registrationMessage = 'Error registering for event';
+      }
+    );
+  }
+
 
   checkRegistration(): void {
     const currentUser = this.authService.getCurrentUser();
-    if (currentUser) {
-      this.registrationService.isUserRegistered(currentUser.userId, this.event.eventId).subscribe(
-        (isRegistered) => {
-          this.isRegistered = isRegistered;
-          if (this.isRegistered) {
-            this.registrationMessage = 'You are already registered for this event';
-          }
-        },
-        (error) => {
-          console.error('Error checking registration', error);
-        }
-      );
+    if (!currentUser) {
+      return;
     }
+    this.registrationService.isUserRegistered(currentUser.userId, this.event.eventId).subscribe(
+      (isRegistered) => {
+        this.isRegistered = isRegistered;
+        if (isRegistered) {
+          this.registrationMessage = 'You are already registered for this event';
+        }
+      },
+      (error) => {
+        console.error('Error checking registration', error);
+      }
+    );
   }
+
 
 }

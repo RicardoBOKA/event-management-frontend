@@ -21,8 +21,8 @@ export class AddFeedbackComponent implements OnInit {
     private fb: FormBuilder,
     private feedbackService: FeedbackService,
     private authService: AuthService,
-    private route: ActivatedRoute,
-    private eventService: EventService
+    private route: ActivatedRoute
+    // private eventService: EventService
   ) {
     this.feedbackForm = this.fb.group({
       comment: ['', Validators.required],
@@ -38,7 +38,6 @@ export class AddFeedbackComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log("Feedback", this.feedbackForm.value);
     if (this.feedbackForm.valid && this.currentUser) {
       const feedbackRequest = {
         feedbackUserId: this.currentUser.userId,
@@ -46,7 +45,7 @@ export class AddFeedbackComponent implements OnInit {
         comment: this.feedbackForm.value.comment,
         rating: this.feedbackForm.value.rating
       };
-
+      console.log("feedbackRequest = ", feedbackRequest);
       this.feedbackService.addFeedback(feedbackRequest).subscribe(
         () => {
           console.log(`Feedback for event ${this.eventId} submitted successfully.`);

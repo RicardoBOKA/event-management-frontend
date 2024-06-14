@@ -11,36 +11,61 @@ nav {
   background: rgb(42, 46, 51);
 }
 
-/* Style général pour la barre de navigation */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center; /* Aligner les enfants verticalement */
-    padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Aligner les enfants verticalement */
+  padding: 0 20px;
+  background: rgb(42, 46, 51); /* Couleur de fond de la navbar */
+}
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%); /* Commence à droite, en dehors de la vue */
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0%); /* Termine à sa position originale */
+    opacity: 1;
+  }
 }
 
 .navbar-brand {
-    color: #FFFFFF; /* Couleur du texte pour le nom de l'application */
-    font-weight: bold; /* Rend le texte plus épais */
-    font-size: 1.5rem; /* Taille du texte */
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 1.5rem;
+  transition: color 0.3s ease-in-out;
+  text-decoration: none;
+  text-align: center;
+  font-style: italic;
+  display: block; /* Assurez-vous que l'élément est un bloc pour l'animation */
+  animation: slideInFromRight 0.5s ease-out forwards; /* Applique l'animation */
 }
 
-.navbar-toggler {
-    border: none; /* Retire la bordure du bouton */
-    background: none; /* Retire le fond par défaut pour la transparence */
+.navbar-brand:hover {
+  color: #cccccc; /* Couleur au survol */
 }
 
-/* Container pour les éléments de navigation */
+.nav-link {
+  color: #dcdcdc; /* Couleur claire pour les liens */
+  padding: 10px 15px; /* Espacement pour un meilleur toucher */
+  transition: color 0.3s ease; /* Transition douce pour le changement de couleur */
+  font-size: 1rem; /* Taille appropriée pour la lisibilité */
+  font-weight: 500; /* Poids de la police pour une meilleure visibilité */
+}
+
+.nav-link:hover, .nav-link:focus {
+  color: #ffffff; /* Couleur des liens au survol */
+  background-color: rgba(255, 255, 255, 0.1); /* Léger fond au survol pour mettre en évidence */
+  text-decoration: none; /* Retire le soulignement au survol */
+}
+
 .collapse.navbar-collapse {
     display: flex; /* Applique Flexbox */
     justify-content: flex-end; /* Aligner les éléments à droite */
     width: 100%; /* Assure que le container prend toute la largeur */
 }
 
-.nav-link:hover {
-    color: #FFFFFF; /* Couleur des liens au survol */
-    text-decoration: none; /* Retire le soulignement au survol */
-}
 
 li {
   display: inline;

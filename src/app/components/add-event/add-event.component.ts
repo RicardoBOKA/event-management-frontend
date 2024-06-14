@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EventService } from '../../services/event.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-event',
@@ -11,7 +12,7 @@ import { AuthService } from '../../services/auth.service';
 export class AddEventComponent implements OnInit {
   eventForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private eventService: EventService,   private authService: AuthService ) {
+  constructor(private fb: FormBuilder, private eventService: EventService,   private authService: AuthService, private router: Router ) {
     this.eventForm = this.fb.group({
         eventName: ['', Validators.required],
         startEvent: ['', Validators.required],
@@ -41,6 +42,8 @@ export class AddEventComponent implements OnInit {
       this.eventService.createEvent(this.eventForm.value).subscribe({
         next: (event) => {
           console.log('Event created:', event);
+          this.router.navigate(["/profile"]);
+          
           // Traitement post-création, comme la redirection ou l'affichage d'un message
         },
         error: (error) => {
