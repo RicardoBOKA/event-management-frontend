@@ -41,46 +41,31 @@ export class LoginComponent implements OnInit {
     get loginEmail() {
       return this.loginForm.get('email');
     }
-  
     get loginPassword() {
       return this.loginForm.get('password');
     }
-  
     // Getters for signupForm controls
     get signupName() {
       return this.signupForm.get('name');
     }
-  
     get signupEmail() {
       return this.signupForm.get('email');
     }
-  
     get signupPassword() {
       return this.signupForm.get('password');
     }
 
   ngOnInit() {
-    // this.initForms();
-    this.signupForm.valueChanges.subscribe(values => {
-      console.log("SingUp form Values:", values);
-    });
-    this.loginForm.valueChanges.subscribe(values => {
-      console.log("Login form Values:", values)
-    })
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/']); // Si déjà connecté, redirigez vers l'accueil
+    }
+    // this.signupForm.valueChanges.subscribe(values => {
+    //   console.log("SingUp form Values:", values);
+    // });
+    // this.loginForm.valueChanges.subscribe(values => {
+    //   console.log("Login form Values:", values)
+    // })
   }
-
-  // initForms() {
-  //   this.loginForm = this.fb.group({
-  //     email: ['', [Validators.required, Validators.email]],
-  //     password: ['', Validators.required]
-  //   });
-
-  //   this.signupForm = this.fb.group({
-  //     name: ['', Validators.required],
-  //     email: ['', [Validators.required, Validators.email]],
-  //     password: ['', Validators.required]
-  //   });
-  // }
 
   onLogin() {
     if (this.loginForm.valid) {

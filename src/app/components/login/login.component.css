@@ -242,13 +242,11 @@ input {
 }
 
 footer {
-    background-color: #222;
     color: #fff;
     font-size: 14px;
-    bottom: 0;
+    bottom: 0px;
     position: fixed;
-    left: 0;
-    right: 0;
+    left: 10px;
     text-align: center;
     z-index: 999;
 }

@@ -9,11 +9,21 @@
 
 <div class="container">
   <div class="events-wrapper">
-    <div *ngIf="events && events.length; else noEvents">
-      <app-event-card *ngFor="let event of events" [event]="event"></app-event-card>
+    <h2 class="fire">Ongoing Events</h2>
+    <div *ngIf="events && events.length; else noOngoingEvents">
+      <app-event-card *ngFor="let event of events let i = index" [event]="event" [index]="i"></app-event-card>
     </div>
-    <ng-template #noEvents>
+    <ng-template #noOngoingEvents>
       <p class="no-events">No events available.</p>
+    </ng-template>
+  </div>
+  <div class="events-wrapper">
+    <h2 class="fire">Past Events</h2>
+    <div *ngIf="pastEvents && pastEvents.length; else noPastEvents">
+      <app-event-card *ngFor="let event of pastEvents let i = index" [event]="event" [index]="i"></app-event-card>
+    </div>
+    <ng-template #noPastEvents>
+      <p class="no-events">No past events available.</p>
     </ng-template>
   </div>
 </div>

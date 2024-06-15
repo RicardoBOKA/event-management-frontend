@@ -1,26 +1,19 @@
 <aside class="sidebar mat-elevation-z8" [class.minify]="!isOpen">
    <div class="icon-block-lg right-al openButton" (click)="toggleSidebar()">
-       <!-- Change icon based on sidebar state -->
        <span class="material-icons sidebar-icon" [class.rotate]="!isOpen">navigate_before</span>
    </div>
-
-   <!-- Link to Events Page -->
-   <div class="icon-block-lg" routerLink="/" [routerLinkActive]="['isActive']" [routerLinkActiveOptions]="{exact: true}">
+   <div class="icon-block-lg" routerLink="/home" [routerLinkActive]="['isActive']" [routerLinkActiveOptions]="{exact: true}">
        <span class="material-icons sidebar-icon">date_range</span>
        <h4 class="icon-description" [class.hide]="!isOpen">Events</h4>
    </div>
-
-   <!-- Link to Yearly Reports Page -->
    <div class="icon-block-lg" routerLink="/profile" [routerLinkActive]="['isActive']">
        <span class="material-icons sidebar-icon">description</span>
        <h4 class="icon-description" [class.hide]="!isOpen"> User infos</h4>
    </div>
-
-   <!-- Link to Staff Management Page -->
-   <div class="icon-block-lg" routerLink="/login" [routerLinkActive]="['isActive']">
+   <!-- <div class="icon-block-lg" routerLink="/login" [routerLinkActive]="['isActive']">
        <span class="material-icons sidebar-icon">group</span>
        <h4 class="icon-description" [class.hide]="!isOpen">Connexion</h4>
-   </div>
+   </div> -->
 
    <!-- Example for additional links that can be uncommented if needed -->
    

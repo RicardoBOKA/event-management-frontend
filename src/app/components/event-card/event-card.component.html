@@ -1,4 +1,4 @@
-<mat-card class="event-card">
+<!-- <mat-card class="event-card">
   <span *ngIf="event.user" class="event-meta">Created by: {{ event.user.userName }}</span>
   <mat-card-header>
     <mat-card-title class="event-title">{{ event.eventName }}</mat-card-title>
@@ -15,6 +15,7 @@
           <span class="date-separator">|</span>
           <span><strong>Ends:</strong> {{ event.endEvent | date:'mediumDate' }}</span>
         </div>
+        
         <div class="registrants">
           <ng-container *ngFor="let registration of registrations; let i = index">
             <div class="profile-icon-wrapper" *ngIf="i < 3">
@@ -24,16 +25,61 @@
           </ng-container>
           <span *ngIf="registrations.length > 3" class="more-registrants">+{{ registrations.length - 3 }}</span>
         </div>
-        
-        
-        <!-- <div class="registran  ts">
-          <h3>Users In:</h3>
-                      <img *ngIf="i < 3" src="/assets/default-profile.jpg" class="profile-icon">
-
-          <ul>
-            <li *ngFor="let registration of registrations">{{ registration.user.userName }}</li>
-          </ul>
-        </div> -->
-    <!-- <button mat-button (click)="onEventClick()">View Details</button> -->
   </mat-card-actions>
-</mat-card>
+</mat-card> -->
+
+<article class="postcard dark" [ngClass]="getColorClass()">
+  <a class="postcard__img_link" href="#">
+    <img class="postcard__img" [src]="'https://picsum.photos/seed/' + imageSeed + '/1000/1000'" alt="Image Title" />
+  </a>
+  <div class="postcard__text">
+    <h1 class="postcard__title" [ngClass]="getColorClass()"><a href="/profile">{{ event.eventName }}</a></h1>
+    <div class="postcard__subtitle small">
+      <time datetime="2020-05-25 12:00:00">
+        <i class="fas fa-calendar-alt mr-2"></i>{{ event.startEvent | date:'mediumDate' }}
+      </time>
+      --
+      <time datetime="2020-05-25 12:00:00">
+        <i class="fas fa-calendar-alt mr-2"></i>{{ event.endEvent | date:'mediumDate' }}
+      </time>
+      <address>
+        {{ event.location }}
+      </address>
+    </div>
+    <div class="postcard__bar"></div>
+    <div class="postcard__preview-txt">{{ event.description }}</div>
+    <ul class="postcard__tagbox">
+      <li class="tag__item"><i></i>Created by : {{ event.user.userName }}</li>
+      <!-- Si l'utilisateur est enregistré à l'evenement et qu'il a encore lieu -->
+      <div *ngIf="isRegistered && isPastEvent">
+        <li class="tag__item play red">
+          <a href="/profile" *ngIf="!isRegistered && isLoggedIn()" (click)="registerForEvent(); $event.preventDefault()"><i></i>Do you want to register ? -></a>
+          <div *ngIf="registrationMessage" class="registration-message">{{ registrationMessage }}</div>  
+        </li>
+      </div>
+      <!-- Si l'utilisateur est enregistré dans une evenement et qu'il est terminé -->
+      <div *ngIf="isRegistered && !isPastEvent">
+        <li class="tag__item play blue">
+          <a href="/profile" *ngIf="!isRegistered && isLoggedIn()" (click)="registerForEvent(); $event.preventDefault()"><i></i>Do you want to register ? -></a>
+          <div *ngIf="registrationMessage" class="registration-message">{{ registrationMessage }}</div>  
+        </li>
+      </div>
+      <!-- Si l'utilisateur n'est pas enregistré à l'evenement et qu'il a encore lieu -->
+      <div *ngIf="!isRegistered && !isPastEvent">
+        <li class="tag__item play green">
+          <a href="/profile" *ngIf="!isRegistered && isLoggedIn()" (click)="registerForEvent(); $event.preventDefault()"><i></i>Do you want to register ? -></a>
+          <div *ngIf="registrationMessage" class="registration-message">{{ registrationMessage }}</div>  
+        </li>
+      </div>
+    </ul>
+  </div>
+  <div class="registrants">
+    <ng-container *ngFor="let registration of registrations; let i = index">
+      <div class="profile-icon-wrapper" *ngIf="i < 3">
+        <img src="/assets/default-profile.jpg" class="profile-icon" alt="Profile image">
+        <span class="tooltip">{{ registration.user.userName }}</span>
+      </div>
+    </ng-container>
+    <span *ngIf="registrations.length > 3" class="more-registrants">+{{ registrations.length - 3 }}</span>
+  </div>
+</article>

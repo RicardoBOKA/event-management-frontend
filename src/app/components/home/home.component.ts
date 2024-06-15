@@ -10,7 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  events: Event[] = [];
   evs: Event[] = [
     {
       "eventId": "91faf052-f95c-47e7-a9dd-e8ea02f8baf3",
@@ -103,6 +102,8 @@ export class HomeComponent implements OnInit {
       }
     }
   ];
+  events: Event[] = [];
+  pastEvents: Event[] = [];
 
   constructor(private eventService: EventService, private authService: AuthService, private router:Router  ) {}
 
@@ -113,7 +114,14 @@ export class HomeComponent implements OnInit {
   fetchEvents(): void {
     this.eventService.getAllEvents().subscribe(
       (data: Event[]) => {
+        const now = new Date();
+        // Trier par evenement qui se termine le plus tôt
+        data.sort((a, b) => new Date(b.endEvent).getTime() - new Date(a.endEvent).getTime());
+
         this.events = data;
+        this.events = data.filter(event => new Date(event.endEvent) >= now);
+        this.pastEvents = data.filter(event => new Date(event.endEvent) < now);
+
       },
       (error) => {
         console.error('Error fetching events', error);

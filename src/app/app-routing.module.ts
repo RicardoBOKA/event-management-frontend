@@ -6,12 +6,14 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
+import { AuthGuard } from './services/auth.guard';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'profile', component: ProfileComponent },
-  {path: 'events/add-event', component: AddEventComponent },
+  { path: 'events/add-event', component: AddEventComponent },
   { path: 'add-feedback/:eventId', component: AddFeedbackComponent },
 ];
 

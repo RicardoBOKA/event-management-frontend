@@ -1,7 +1,7 @@
-  /* Espace entre la navbar et les cartes */
+  Espace entre la navbar et les cartes
   :host {
     display: block;
-    padding-top: 70px; /* Ajustez en fonction de la hauteur de votre navbar */
+    padding-top: 70px;
     margin-bottom: 20px;
   }
 
@@ -80,7 +80,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    margin-left: 12px;  /* Chevauche l'icône précédente */
+    margin-left: 1px;  /* Chevauche l'icône précédente */
   }
   
   
@@ -110,4 +110,3 @@
     visibility: visible;
     opacity: 1;
   }
-  
