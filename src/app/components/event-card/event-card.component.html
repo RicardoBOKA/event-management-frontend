@@ -34,7 +34,7 @@
   </a>
   <div class="postcard__text">
     <h1 class="postcard__title" [ngClass]="getColorClass()"><a href="/profile">{{ event.eventName }}</a></h1>
-    <p class="tag__item"><i></i>Created by : {{ event.user.userName }}</p>
+    <p class="tag__item"><i></i>Created by : {{ checkMe(event.user.userName) }}</p>
     <div class="postcard__subtitle small">
       <time datetime="2020-05-25 12:00:00">
         <i class="fas fa-calendar-alt mr-2"></i>{{ event.startEvent | date:'mediumDate' }}

@@ -1,32 +1,75 @@
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 
+<!-- <div class="profile-content">
+  <h1>User Profile</h1>
+  <div *ngIf="currentUser" class="profile-details">
+    <p><strong>Name:</strong> {{ currentUser.userName }}</p>
+    <p><strong>Email:</strong> {{ currentUser.email }}</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="events-wrapper">
+    <section class="eventsHeader">
+      <h1 id="pageTitle">Your registrations </h1>
+
+    <h2 id="ongoingEvents" class="fire">Events in which you are registered</h2>
+    <div *ngIf="registrations && registrations.length; else noOngoing">
+      <div *ngFor="let registration of registrations let i = index">
+        <app-event-card  [event]="registration.event" [index]="i"></app-event-card>
+      </div>
+    </div>
+    <ng-template #noOngoing>
+      <p class="no-events">No events available.</p>
+    </ng-template>
+
+  
+  <div class="events-wrapper">
+    <h2 id="pastEvents" class="fire">Past Events in which you were registered</h2>
+    <div *ngIf="pastRegistrations && pastRegistrations.length; else noPastRegistrations">
+
+      <div *ngFor="let pastRegistration of pastRegistrations let i = index">
+
+        <app-event-card [event]="pastRegistration.event" [index]="i"></app-event-card>
+
+      </div>
+
+    </div>
+    <ng-template #noPastRegistrations>
+      <p class="no-events">No past events available.</p>
+    </ng-template>
+  </div> -->
+
+
 <div class="profile-container">
   <div class="profile-content">
-    <h1>User Profile</h1>
+    <h1 id="pageTitle">User Profile</h1>
     <div *ngIf="currentUser" class="profile-details">
-      <p><strong>Name:</strong> {{ currentUser.userName }}</p>
-      <p><strong>Email:</strong> {{ currentUser.email }}</p>
+      <section>
+        <p><strong>Name:</strong> {{ currentUser.userName }}</p>
+        <p><strong>Email:</strong> {{ currentUser.email }}</p>
+      </section>
 
-      <h2>Your Ongoing Registrations</h2>
+      <h2 id="ongoing">Your Ongoing Registrations</h2>
       <div *ngFor="let registration of registrations" class="registration-card">
         <h3>{{ registration.event.eventName }}</h3>
-        <p><strong>Registration Date:</strong> {{ registration.registrationDate | date:'short' }}</p>
-        <button mat-button (click)="deleteRegistration(registration.registrationId)">Delete Registration</button>
+        <p><strong>This event starts on :</strong> {{ registration.event.startEvent | date:'short' }}</p>
         <span *ngIf="isUserOrganizer(registration.event.user.userId)" class="organizer-badge">
           You organised it
         </span>
+        <button mat-button (click)="deleteRegistration(registration.registrationId)">Delete Registration</button>
       </div>
       
       <ng-template #noOngoingRegistrations>
         <p>No ongoing registrations available.</p>
       </ng-template>
 
-      <h2>Your Past Registrations</h2>
+      <h2 id="past">Your Past Registrations</h2>
       <div *ngIf="pastRegistrations && pastRegistrations.length; else noPastRegistrations">
         <div *ngFor="let registration of pastRegistrations" class="registration-card">
           <h3>{{ registration.event.eventName }}</h3>
-          <p><strong>Registration Date:</strong> {{ registration.registrationDate | date:'short' }}</p>
+          <p><strong>This event ended on :</strong> {{ registration.event.endEvent | date:'short' }}</p>
           <button mat-button (click)="redirectToFeedback(registration.event.eventId)">Give Feedback</button>
           <div *ngIf="feedbackMessages[registration.event.eventId]">
             {{ feedbackMessages[registration.event.eventId] }}

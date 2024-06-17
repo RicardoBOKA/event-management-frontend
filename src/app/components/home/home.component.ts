@@ -47,9 +47,7 @@ export class HomeComponent implements OnInit {
 
   searchFilters = {
   startDate: '',
-  endDate: '',
-  name: '',
-  location: ''
+  endDate: ''
   };
 
   searchEvents(): void {

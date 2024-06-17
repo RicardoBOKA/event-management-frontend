@@ -1,4 +1,5 @@
 .profile-container {
+  margin-top: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -7,7 +8,7 @@
 
 .profile-content {
   width: 80%;
-  max-width: 800px;
+  max-width: 1800px;
   text-align: center;
   background-color: #f9f9f9;
   padding: 20px;
@@ -53,4 +54,73 @@ button:hover {
   border-radius: 5px;
   margin-top: 5px;
   font-size: 12px;
+}
+
+
+/* Style for the container */
+
+.eventsHeader {
+  /* text-align: center; */
+  margin: 40px 0px 60px 0px;
+  
+}
+
+.events-wrapper {
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
+  margin-left: 80px;
+  margin-right: 40px;
+}
+
+#pageTitle {
+    display: block;
+    margin-left: 5%;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 3em;
+}
+
+
+#ongoing:hover, #past:hover {
+
+  transition: 200ms;
+  background: rgb(88, 252, 255);
+}
+
+
+/* Style for the heading */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+    background: linear-gradient(-45deg, #ff8d6b, #69d0f5, #6ddfc4);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    display: flex;
+    align-items: center; /* Centre le texte verticalement */
+    padding: 10px 20px; /* Ajoute un espace autour du texte */
+    margin: 20px 0; /* Donne un peu d'espace autour du h2 pour ne pas coller aux autres éléments */
+    border-radius: 10px; /* Arrondit les coins pour un effet d'onglet */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Ajoute une ombre subtile pour un effet de profondeur */
+    color: #003C43; /* Assure que le texte est blanc pour une bonne lisibilité */
+    font-size: 1.5em; /* Ajuste la taille du texte */
+    text-transform: uppercase; /* Mettre le texte en majuscules pour un effet plus stylé */
+    border-left: 5px solid rgba(255, 255, 255, 0.5); /* Ajoute une bordure à gauche pour renforcer l'effet d'onglet */
+    border-bottom: 5px  solid rgba(255, 255, 255, 0.5);    
+}
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }

@@ -5,8 +5,6 @@ import { User } from '../../models/user.model';
 // import { Event } from '../../models/event.model';
 import { Registration } from '../../models/registration.model';
 import { FeedbackService } from '../../services/feedback.service';
-import { Feedback } from '../../models/feedback.model';
-import { EventService } from '../../services/event.service';
 import { Router } from '@angular/router';
 
 @Component({

@@ -22,7 +22,7 @@ export class AddFeedbackComponent implements OnInit {
     private feedbackService: FeedbackService,
     private authService: AuthService,
     private route: ActivatedRoute
-    // private eventService: EventService
+    
   ) {
     this.feedbackForm = this.fb.group({
       comment: ['', Validators.required],
@@ -35,6 +35,9 @@ export class AddFeedbackComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.authService.getCurrentUser();
     this.eventId = this.route.snapshot.paramMap.get('eventId') || '';
+    this.feedbackForm.valueChanges.subscribe(values => {
+      console.log("SingUp form Values:", values);
+    });
   }
 
   onSubmit(): void {

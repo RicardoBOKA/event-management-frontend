@@ -31,6 +31,10 @@ export class EventCardComponent implements OnInit {
     this.loadRegistrations();
     this.imageSeed = `${this.event.eventId}-${new Date().getTime()}`;
   }
+  
+  checkMe(userName: String): String {
+    return (this.authService.getCurrentUser()?.userName == userName ? 'You' : userName);
+  }
 
   checkEventStatus(): void {
     const now = new Date();
