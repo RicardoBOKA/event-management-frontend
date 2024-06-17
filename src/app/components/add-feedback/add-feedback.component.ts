@@ -3,8 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FeedbackService } from '../../services/feedback.service';
 import { AuthService } from '../../services/auth.service';
-import { Feedback } from '../../models/feedback.model';
 import { User } from '../../models/user.model';
+import { Feedback } from '../../models/feedback.model';
 import { EventService } from '../../services/event.service';
 
 @Component({

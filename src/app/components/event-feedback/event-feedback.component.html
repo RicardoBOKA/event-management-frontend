@@ -1,0 +1,47 @@
+<!-- 
+<div class="feedback-container">
+  <h1 class="feedback-title">Rajotuer l'objet EVENT evec toutes les INFOS associés</h1>
+  <div *ngIf="feedbacks.length > 0; else noFeedbacks">
+    <div class="feedback-card" *ngFor="let feedback of feedbacks">
+      <h2 class="user-name">{{ feedback.user.userName }}</h2>
+      <p class="feedback-date">{{ feedback.date | date:'mediumDate' }}</p>
+      <p class="feedback-content">{{ feedback.comment }}</p>
+      <div class="feedback-rating">Rating: <span class="rating">{{ feedback.rating }}</span>/5</div>
+    </div>
+  </div>
+  <ng-template #noFeedbacks>
+    <p>No feedbacks have been left for this event yet.</p>
+  </ng-template>
+</div> -->
+
+<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
+
+<div class="container">
+  <article class="postcard light yellow">
+    <a class="postcard__img_link" href="#">
+      <img class="postcard__img" src="https://picsum.photos/501/501" alt="Image Title" />
+    </a>
+    <div class="postcard__text t-dark">
+      <h1 class="postcard__title yellow"><a href="#">{{ event.eventName }}</a></h1>
+      <div class="postcard__subtitle small">
+        <time datetime="2020-05-25 12:00:00">
+          <i class="fas fa-calendar-alt mr-2"></i>Ended : {{ event.endEvent | date:'mediumDate' }}
+        </time>
+      </div>
+      <div class="postcard__bar"></div>
+      <div class="postcard__preview-txt">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, fugiat asperiores inventore beatae accusamus odit minima enim, commodi quia, doloribus eius! Ducimus nemo accusantium maiores velit corrupti tempora reiciendis molestiae repellat vero. Eveniet ipsam adipisci illo iusto quibusdam, sunt neque nulla unde ipsum dolores nobis enim quidem excepturi, illum quos!</div>
+      <ul class="postcard__tagbox">
+        <li class="tag__item">Created by : {{ event.user.userName }}</li>
+      </ul>
+    </div>
+  </article>
+  
+  <div *ngFor="let feedback of feedbacks">
+    <app-feedback-item [feedback]="feedback"></app-feedback-item>
+  </div>
+  <div *ngIf="feedbacks && feedbacks.length; else noFeedbacks"></div>
+    <ng-template #noFeedbacks>
+      <p class="no-events">Nobody gave a feedback for this event.</p>
+    </ng-template>
+</div>

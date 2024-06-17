@@ -2,19 +2,25 @@
    <div class="icon-block-lg right-al openButton" (click)="toggleSidebar()">
        <span class="material-icons sidebar-icon" [class.rotate]="!isOpen">navigate_before</span>
    </div>
+
    <div class="icon-block-lg" routerLink="/home" [routerLinkActive]="['isActive']" [routerLinkActiveOptions]="{exact: true}">
-       <span class="material-icons sidebar-icon">date_range</span>
+       <span class="material-icons sidebar-icon">home</span>
        <h4 class="icon-description" [class.hide]="!isOpen">Events</h4>
    </div>
+
+   <div class="icon-block-lg" routerLink="/home" fragment="ongoingEvents">
+        <span class="material-icons sidebar-icon">new_label</span>
+        <h4 class="icon-description" [class.hide]="!isOpen">Ongoing Events</h4>
+    </div>
+    <div class="icon-block-lg" routerLink="/home" fragment="pastEvents">
+        <span class="material-icons sidebar-icon">timer_off</span>
+        <h4 class="icon-description" [class.hide]="!isOpen">Past Events</h4>
+    </div>
+
    <div class="icon-block-lg" routerLink="/profile" [routerLinkActive]="['isActive']">
-       <span class="material-icons sidebar-icon">description</span>
+       <span class="material-icons sidebar-icon">supervised_user_circle</span>
        <h4 class="icon-description" [class.hide]="!isOpen"> User infos</h4>
    </div>
-   <!-- <div class="icon-block-lg" routerLink="/login" [routerLinkActive]="['isActive']">
-       <span class="material-icons sidebar-icon">group</span>
-       <h4 class="icon-description" [class.hide]="!isOpen">Connexion</h4>
-   </div> -->
-
    <!-- Example for additional links that can be uncommented if needed -->
    
    <!-- <div class="icon-block-lg" routerLink="/newsfeed" [routerLinkActive]="['isActive']">

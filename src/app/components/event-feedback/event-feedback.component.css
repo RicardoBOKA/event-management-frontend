@@ -1,0 +1,22 @@
+/* Ajout de styles globaux dans le fichier CSS principal ou spécifique à la page */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centre horizontalement les enfants */
+  margin-top: 50px; /* Ajustez cette valeur pour compenser la hauteur de votre navbar */
+  padding: 20px;
+}
+
+.postcard {
+  max-width: 1000px; /* Limite la largeur des cartes pour un meilleur contrôle du design */
+  width: 100%; /* Utilise toute la largeur jusqu'à max-width */
+  margin-bottom: 20px; /* Espacement entre les cartes */
+}
+
+.app-feedback-item {
+  max-width: 600px;
+  width: 100%;
+  margin-top: 10px; /* Espacement entre les éléments de feedback */
+  display: flex;
+  justify-content: center; /* Centre horizontalement le feedback si nécessaire */
+}

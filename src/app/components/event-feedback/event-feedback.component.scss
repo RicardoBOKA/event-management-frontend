@@ -238,7 +238,7 @@ a, a:hover {
 }
 
 /* COLORS */
-.postcard .postcard__tagbox .green.play {
+.postcard .postcard__tagbox .green.play:hover {
 	background: $main-green;
 	color: black;
 }
@@ -259,7 +259,7 @@ a, a:hover {
 	background-image: linear-gradient(30deg, $main-green-rgb-015, transparent 50%);
 }
 
-.postcard .postcard__tagbox .blue.play {
+.postcard .postcard__tagbox .blue.play:hover {
 	background: $main-blue;
 }
 .blue .postcard__title:hover {
@@ -275,7 +275,7 @@ a, a:hover {
 	background-image: linear-gradient(30deg, $main-blue-rgb-015, transparent 50%);
 }
 
-.postcard .postcard__tagbox .red.play {
+.postcard .postcard__tagbox .red.play:hover {
 	background: $main-red;
 }
 .red .postcard__title:hover {
@@ -291,7 +291,7 @@ a, a:hover {
 	background-image: linear-gradient(30deg, $main-red-rgb-015, transparent 50%);
 }
 
-.postcard .postcard__tagbox .yellow.play {
+.postcard .postcard__tagbox .yellow.play:hover {
 	background: $main-yellow;
 	color: black;
 }
@@ -367,54 +367,120 @@ a, a:hover {
 }
 
 
-// ICI STYLE POUR LES ICONES DES PERSONNES ENREGISTREES, PAS ENCORE RAJOUTE
-.profile-icon {
-  width: 30px;        /* Taille de l'icône */
-  height: 30px;       /* Taille de l'icône */
-  border-radius: 50%; /* Rend l'icône ronde */
-  object-fit: cover;  /* Assure que l'image couvre bien la zone sans être déformée */
-  margin-right: -10px; /* Chevauche les icônes précédentes */
-  border: 2px solid white; /* Ajoute une bordure pour mieux distinguer les icônes chevauchées */
-}
-
-.more-registrants {
-  font-size: 16px;
-  line-height: 30px; /* Alignement vertical avec les icônes */
-  color: #666;       /* Couleur du texte pour '+x' */
-  background: white; /* Fond pour distinguer le texte si chevauchement */
-  border-radius: 50%;
-  width: 30px;
-  height: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: 1px;  /* Chevauche l'icône précédente */
-}
 
 
-.profile-icon-wrapper {
-  position: relative;
-  display: inline-block;
-  margin-right: -10px;
-}
 
-.tooltip {
-  position: absolute;
-  background-color: black;
-  color: white;
+.feedback-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f4f4f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  }
+  
+  .feedback-title {
+    font-size: 2em;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .feedback-card {
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+  }
+  
+  .user-name {
+    font-size: 1.2em;
+    color: #007BFF;
+  }
+  
+  .feedback-date {
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-content {
+    font-size: 1em;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .feedback-rating {
+    font-weight: bold;
+    color: #28a745;
+  }
+  
+  .rating {
+    color: #ffc107;
+  }
+  
+
+  body {
+  color: #1a1a1a;
+  font-family: "Open Sans", Helvetica, sans-serif;
+  font-size: 15px;
+  line-height: 1.6em;
   text-align: center;
-  padding: 5px 10px;
-  border-radius: 6px;
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.3s;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
+  background: #757f9a;
+  background: -webkit-linear-gradient(to left, #d7dde8, #757f9a);
+  background: linear-gradient(to left, #d7dde8, #757f9a);
 }
 
-.profile-icon-wrapper:hover .tooltip {
-  visibility: visible;
-  opacity: 1;
+#content {
+  max-width: 600px;
+  margin: 25vh auto;
 }
+
+.testimonial blockquote {
+  margin: 10px 10px 0;
+  background: #efefef;
+  padding: 20px 60px;
+  position: relative;
+  border: none;
+  border-radius: 8px;
+  font-style: italic;
+}
+
+.testimonial blockquote:before,
+.testimonial blockquote:after {
+  content: "\201C";
+  position: absolute;
+  font-size: 80px;
+  line-height: 1;
+  color: #757f9a;
+  font-style: normal;
+}
+
+.testimonial blockquote:before {
+  top: 0;
+  left: 10px;
+}
+
+.testimonial blockquote:after {
+  content: "\201D";
+  right: 10px;
+  bottom: -0.5em;
+}
+
+.testimonial div {
+  width: 0;
+  height: 0;
+  border-left: 0 solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #efefef;
+  margin: 0 0 0 60px;
+}
+
+.testimonial p {
+  margin: 8px 0 0 20px;
+  text-align: left;
+  color: #fff;
+}
+

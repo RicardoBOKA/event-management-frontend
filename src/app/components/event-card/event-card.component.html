@@ -34,6 +34,7 @@
   </a>
   <div class="postcard__text">
     <h1 class="postcard__title" [ngClass]="getColorClass()"><a href="/profile">{{ event.eventName }}</a></h1>
+    <p class="tag__item"><i></i>Created by : {{ event.user.userName }}</p>
     <div class="postcard__subtitle small">
       <time datetime="2020-05-25 12:00:00">
         <i class="fas fa-calendar-alt mr-2"></i>{{ event.startEvent | date:'mediumDate' }}
@@ -49,12 +50,14 @@
     <div class="postcard__bar"></div>
     <div class="postcard__preview-txt">{{ event.description }}</div>
     <ul class="postcard__tagbox">
-      <li class="tag__item"><i></i>Created by : {{ event.user.userName }}</li>
       <!-- Si l'utilisateur est enregistré à l'evenement et qu'il a encore lieu -->
-      <div *ngIf="isRegistered && isPastEvent">
+      <div *ngIf="isPastEvent">
         <li class="tag__item play red">
-          <a href="/profile" *ngIf="!isRegistered && isLoggedIn()" (click)="registerForEvent(); $event.preventDefault()"><i></i>Do you want to register ? -></a>
-          <div *ngIf="registrationMessage" class="registration-message">{{ registrationMessage }}</div>  
+          <a href="/profile" *ngIf="!isRegistered && isLoggedIn()" (click)="registerForEvent()"></a>
+          <div *ngIf="registrationMessage" class="registration-message">{{ registrationMessage }}</div>
+        </li>
+        <li class="tag__item play yellow">
+          <a [routerLink]="['/event-feedback', event.eventId]">See what community thought about this event !</a>
         </li>
       </div>
       <!-- Si l'utilisateur est enregistré dans une evenement et qu'il est terminé -->
@@ -68,9 +71,10 @@
       <div *ngIf="!isRegistered && !isPastEvent">
         <li class="tag__item play green">
           <a href="/profile" *ngIf="!isRegistered && isLoggedIn()" (click)="registerForEvent(); $event.preventDefault()"><i></i>Do you want to register ? -></a>
-          <div *ngIf="registrationMessage" class="registration-message">{{ registrationMessage }}</div>  
+          <div *ngIf="registrationMessage" class="registration-message">{{ registrationMessage }}</div>
         </li>
       </div>
+
     </ul>
   </div>
   <div class="registrants">

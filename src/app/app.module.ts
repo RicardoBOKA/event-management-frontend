@@ -23,6 +23,8 @@ import { EventCardComponent } from './components/event-card/event-card.component
 import { AddEventComponent } from './components/add-event/add-event.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AddFeedbackComponent } from './components/add-feedback/add-feedback.component';
+import { EventFeedbackComponent } from './components/event-feedback/event-feedback.component';
+import { FeedbackItemComponent } from './components/feedback-item/feedback-item.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { AddFeedbackComponent } from './components/add-feedback/add-feedback.com
     EventCardComponent,
     AddEventComponent,
     ProfileComponent,
-    AddFeedbackComponent
+    AddFeedbackComponent,
+    EventFeedbackComponent,
+    FeedbackItemComponent
   ],
   imports: [
     BrowserModule,

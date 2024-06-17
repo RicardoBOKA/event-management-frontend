@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model'; // Assurez-vous que le chemin d'accès est correct
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -13,7 +14,7 @@ export class SidebarComponent implements OnInit {
   isLoggedIn: boolean = true; // Initialiser comme false
   currentUser: User | null = null; // Pour stocker les informations de l'utilisateur connecté
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit() {
     // Vérifier si un utilisateur est connecté et obtenir les détails
@@ -32,5 +33,9 @@ export class SidebarComponent implements OnInit {
 
   logout() {
     this.authService.logout(); // Appeler la méthode logout de AuthService
+  }
+
+  navigateTo(fragment: string): void {
+    this.router.navigate([], { fragment: fragment });
   }
 }

@@ -1,15 +1,23 @@
 <app-navbar></app-navbar>
 <app-sidebar></app-sidebar>
 
-<section class="eventsHeader">
-  <h1 id="pageTitle">Community Events</h1>
-  <button id="createButton" type="button" class="btn" *ngIf="isLoggedIn()" routerLink="/events/add-event">Create a New Event for community !</button>
-  <button id="loginButton" type="button" class="btn" *ngIf="!isLoggedIn()" (click)="redirectToLogin()">Log In to Create Events</button>
-</section>
 
 <div class="container">
+  
   <div class="events-wrapper">
-    <h2 class="fire">Ongoing Events</h2>
+    <section class="eventsHeader">
+      <h1 id="pageTitle">Community Events</h1>
+      <button id="createButton" type="button" class="btn" *ngIf="isLoggedIn()" routerLink="/events/add-event">Create a New Event for community !</button>
+      <button id="loginButton" type="button" class="btn" *ngIf="!isLoggedIn()" (click)="redirectToLogin()">Log In to Create Events</button>
+    </section>
+
+    <input type="date" [(ngModel)]="searchFilters.startDate">
+    <input type="date" [(ngModel)]="searchFilters.endDate">
+    <input type="text" [(ngModel)]="searchFilters.name" placeholder="Event Name">
+    <input type="text" [(ngModel)]="searchFilters.location" placeholder="Location">
+    <button (click)="searchEvents()">Search</button>
+
+    <h2 id="ongoingEvents" class="fire">Ongoing Events</h2>
     <div *ngIf="events && events.length; else noOngoingEvents">
       <app-event-card *ngFor="let event of events let i = index" [event]="event" [index]="i"></app-event-card>
     </div>
@@ -18,7 +26,7 @@
     </ng-template>
   </div>
   <div class="events-wrapper">
-    <h2 class="fire">Past Events</h2>
+    <h2 id="pastEvents" class="fire">Past Events</h2>
     <div *ngIf="pastEvents && pastEvents.length; else noPastEvents">
       <app-event-card *ngFor="let event of pastEvents let i = index" [event]="event" [index]="i"></app-event-card>
     </div>
