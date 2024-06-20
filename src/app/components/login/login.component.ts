@@ -75,13 +75,12 @@ export class LoginComponent implements OnInit {
           user => {
             if (user) {
               console.log("Logged in successfully!");
-              this.router.navigate(['/profile']);  // Redirect to profile after login
+              this.router.navigate(['/home']);  // Redirect to homepage after login
             } else {
               console.error("Login failed");
             }
           },
           error => {
-            // this.errorMessage = "Invalid email or password";
             console.error('Login error', error);
           }
         );
@@ -98,7 +97,7 @@ export class LoginComponent implements OnInit {
       ).subscribe(
         user => {
           console.log("User created successfully!", user);
-          this.router.navigate(['/profile']);  // Redirect to profile after signup
+          this.router.navigate(['/home']);  // Redirect to homepage after signup
         },
         error => {
           console.error('Signup error', error);
@@ -107,26 +106,6 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  // onSignup() {
-  //   if (this.signupForm.valid) {
-  //     const signupData = {
-  //       userName: this.signupForm.value.name,
-  //       email: this.signupForm.value.email,
-  //       password: this.signupForm.value.password
-  //     };
-  //     this.userService.createUser(signupData).subscribe(
-  //       user => {
-  //         console.log("User created successfully!", user);
-  //         this.router.navigate(['/']);
-  //       },
-  //       error => {
-  //         // this.errorMessage = "Error signing up";
-  //         console.log("Valide ? : ", this.signupForm.valid);
-  //         console.error('Signup error', error);
-  //       }
-  //     );
-  //   }
-  // }
   
   showSignUpPanel() {
     const container = document.getElementById('container');

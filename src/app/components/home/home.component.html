@@ -8,13 +8,14 @@
       <h1 id="pageTitle">Community Events</h1>
       <button id="createButton" type="button" class="btn" *ngIf="isLoggedIn()" routerLink="/events/add-event">Create a New Event for community !</button>
       <button id="loginButton" type="button" class="btn" *ngIf="!isLoggedIn()" (click)="redirectToLogin()">Log In to Create Events</button>
+      <div class="filter-form">
+        <input type="datetime-local" placeholder="Start Date" [(ngModel)]="filterStartDate">
+        <input type="datetime-local" placeholder="End Date" [(ngModel)]="filterEndDate">
+        <!-- <input type="text" placeholder="Event Name" [(ngModel)]="filterName">
+        <input type="text" placeholder="Location" [(ngModel)]="filterLocation"> -->
+        <button (click)="applyFilters()">Search</button>
+      </div>
     </section>
-
-    <input type="date" [(ngModel)]="searchFilters.startDate">
-    <input type="date" [(ngModel)]="searchFilters.endDate">
-    <!-- <input type="text" [(ngModel)]="searchFilters.name" placeholder="Event Name">
-    <input type="text" [(ngModel)]="searchFilters.location" placeholder="Location"> -->
-    <button (click)="searchEvents()">Search</button>
 
     <h2 id="ongoingEvents" class="fire">Ongoing Events</h2>
     <div *ngIf="events && events.length; else noOngoingEvents">

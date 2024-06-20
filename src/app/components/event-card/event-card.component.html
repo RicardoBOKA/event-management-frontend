@@ -76,14 +76,14 @@
       </div>
 
     </ul>
-  </div>
-  <div class="registrants">
-    <ng-container *ngFor="let registration of registrations; let i = index">
-      <div class="profile-icon-wrapper" *ngIf="i < 3">
-        <img src="/assets/default-profile.jpg" class="profile-icon" alt="Profile image">
-        <span class="tooltip">{{ registration.user.userName }}</span>
-      </div>
-    </ng-container>
-    <span *ngIf="registrations.length > 3" class="more-registrants">+{{ registrations.length - 3 }}</span>
+    <div class="registrants">
+      <ng-container *ngFor="let registration of registrations; let i = index">
+        <div class="profile-icon-wrapper" *ngIf="i < 3">
+          <img src="/assets/default-profile.jpg" class="profile-icon" alt="Profile image">
+          <span class="tooltip">{{ registration.user.userName }}</span>
+        </div>
+      </ng-container>
+      <span *ngIf="registrations.length > 3" class="more-registrants">+{{ registrations.length - 3 }}</span>
+    </div>
   </div>
 </article>

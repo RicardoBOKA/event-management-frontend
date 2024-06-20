@@ -369,33 +369,34 @@ a, a:hover {
 
 // ICI STYLE POUR LES ICONES DES PERSONNES ENREGISTREES, PAS ENCORE RAJOUTE
 .profile-icon {
-  width: 30px;        /* Taille de l'icône */
-  height: 30px;       /* Taille de l'icône */
+  margin-top: 15px;
+  width: 14px;        /* Taille de l'icône */
+  height: 14px;       /* Taille de l'icône */
   border-radius: 50%; /* Rend l'icône ronde */
   object-fit: cover;  /* Assure que l'image couvre bien la zone sans être déformée */
-  margin-right: -10px; /* Chevauche les icônes précédentes */
+  margin-right: -8px; /* Chevauche les icônes précédentes */
   border: 2px solid white; /* Ajoute une bordure pour mieux distinguer les icônes chevauchées */
 }
 
 .more-registrants {
-  font-size: 16px;
+  font-size: 7px;
   line-height: 30px; /* Alignement vertical avec les icônes */
   color: #666;       /* Couleur du texte pour '+x' */
   background: white; /* Fond pour distinguer le texte si chevauchement */
   border-radius: 50%;
-  width: 30px;
-  height: 30px;
+  width: 10px;
+  height: 10px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: 1px;  /* Chevauche l'icône précédente */
+  margin-left: 30px;  /* Chevauche l'icône précédente */
 }
 
 
 .profile-icon-wrapper {
   position: relative;
   display: inline-block;
-  margin-right: -10px;
+  left: 25px;
 }
 
 .tooltip {

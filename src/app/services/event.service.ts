@@ -32,19 +32,28 @@ export class EventService {
     return this.http.delete<void>(`${this.apiUrl}/${eventId}`);
   }
 
-  // getEventsByDateRange(startDate: string, endDate: string): Observable<Event[]> {
-  //   return this.http.get<Event[]>(`/v1/events/search?start_date=${startDate}&end_date=${endDate}`);
-  // }
-
-  searchEvents(filters: { startDate?: string; endDate?: string; name?: string; location?: string }): Observable<Event[]> {
+  searchEvents(filters: any): Observable<Event[]> {
     let params = new HttpParams();
-    
     if (filters.startDate) params = params.append('startDate', filters.startDate);
     if (filters.endDate) params = params.append('endDate', filters.endDate);
     if (filters.name) params = params.append('name', filters.name);
     if (filters.location) params = params.append('location', filters.location);
-  
-    return this.http.get<Event[]>('/v1/events/search', { params });
+
+    return this.http.get<Event[]>(`${this.apiUrl}/search`, { params });
   }
-  
+
+  // Ajout d'une méthode pour récupérer les événements par un terme de recherche
+  getEventsByAllLikeNamerLocation(location: string): Observable<Event[]> {
+    return this.http.get<Event[]>(`${this.apiUrl}/searchName`, { params: { name: location } });
+  }
+
+  // searchEvents(startDate?: string, endDate?: string, name?: string, location?: string): Observable<Event[]> {
+  //   let params = new HttpParams();
+  //   if (startDate) params = params.set('startDate', startDate);
+  //   if (endDate) params = params.set('endDate', endDate);
+  //   if (name) params = params.set('name', name);
+  //   if (location) params = params.set('location', location);
+    
+  //   return this.http.get<Event[]>(`${this.apiUrl}/search`, { params });
+  // }
 }

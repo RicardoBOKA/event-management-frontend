@@ -2,8 +2,8 @@
   margin-top: 80px;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  /* align-items: center; */
+  /* height: 100vh; */
 }
 
 .profile-content {
@@ -21,7 +21,7 @@
 }
 
 .registration-card {
-  border: 1px solid #ccc;
+  border: 1px solid #37efa2;
   border-radius: 4px;
   padding: 15px;
   margin-bottom: 10px;
