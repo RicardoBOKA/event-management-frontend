@@ -16,6 +16,8 @@ export class AddFeedbackComponent implements OnInit {
   feedbackForm: FormGroup;
   currentUser: User | null = null;
   eventId: string;
+  stars: boolean[] = Array(5).fill(false);
+
 
   constructor(
     private fb: FormBuilder,
@@ -30,6 +32,23 @@ export class AddFeedbackComponent implements OnInit {
     });
 
     this.eventId = '';
+  }
+
+
+  public rate(rating: number) {
+    console.log('rating', rating);
+
+    const currentRating = this.feedbackForm.get('rating')?.value;
+    this.stars = this.stars.map((_, i) => rating > i);
+
+    if (currentRating === rating) {
+      // Désélectionner toutes les étoiles si la même étoile est cliquée de nouveau
+      this.feedbackForm.get('rating')?.setValue(null);
+      this.stars.fill(false);
+    } else {
+      // Mettre à jour la valeur du formulaire
+      this.feedbackForm.get('rating')?.setValue(rating);
+    }
   }
 
   ngOnInit(): void {

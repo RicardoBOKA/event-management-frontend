@@ -47,7 +47,7 @@
               <div class="field padding-bottom--24">
                 <!-- <label for="email">Email</label>
                 <input type="email" name="email"> -->
-                <label for="comment">Comment:</label>
+                <label for="comment">Comment :</label>
                 <textarea id="comment" formControlName="comment" class="form-control"  rows="8" cols="50"></textarea>
               </div>
               <!-- <div class="field padding-bottom--24">
@@ -65,9 +65,15 @@
                 </label>
               </div> -->
               <div class="field padding-bottom--24">
-                <!-- <input type="submit" name="submit" value="Continue"> -->
-                <label for="rating">Rating:</label>
+                <!-- <input type="submit" name="submit" value="Continue"> 
+                <label for="rating">Rating :</label>
                 <input id="rating" type="number" formControlName="rating" min="1" max="5" class="form-control">
+                -->
+                <span id="starrs" *ngFor="let star of stars; let i = index" (click)="rate(i + 1)">
+                  <ng-container *ngIf="star; else noStar">⭐</ng-container>
+                  <ng-template #noStar>★</ng-template>
+                </span>
+
               </div>
               <div class="field">
                 <a class="ssolink" href="/profile" (click)="onSubmit()" [class.disabled]="!feedbackForm.valid">Submit your feedback</a>
@@ -88,20 +94,19 @@
   </div>
 </div>
 
-
-
+<!--
 <div class="feedback-container">
   <h2>Give Feedback for Event</h2>
   <form [formGroup]="feedbackForm" (ngSubmit)="onSubmit()" class="feedback-form">
     <div class="form-group">
-      <label for="comment">Comment:</label>
+      <label for="comment">Comment :</label>
       <textarea id="comment" formControlName="comment" class="form-control"></textarea>
     </div>
     <div class="form-group">
-      <label for="rating">Rating:</label>
+      <label for="rating">Rating :</label>
       <input id="rating" type="number" formControlName="rating" min="1" max="5" class="form-control">
     </div>
     <button type="submit" [disabled]="!feedbackForm.valid" class="btn btn-primary">Submit Feedback</button>
   </form>
 </div>
-
+-->

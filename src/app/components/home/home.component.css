@@ -98,3 +98,39 @@ app-event-card {
   text-align: center;
   margin-top: 50px;
 }
+
+.filter-form {
+  margin-top: 40px;
+  display: flex;
+  gap: 10px; /* Espacement entre les éléments */
+  padding: 10px;
+  background-color: #f5f5f5; /* Couleur de fond légère */
+  border-radius: 5px; /* Bords arrondis */
+}
+
+.filter-form input[type="datetime-local"] {
+  flex: 1; /* Flexibilité pour occuper l'espace disponible */
+  padding: 10px;
+  border: 2px solid #ccc; /* Bordure grise */
+  border-radius: 5px; /* Bords arrondis */
+  transition: border-color 0.3s; /* Transition pour l'interaction */
+}
+
+.filter-form input[type="datetime-local"]:focus {
+  border-color: #0056b3; /* Changement de couleur lors de la focalisation */
+  outline: none;
+}
+
+.filter-form button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #007bff; /* Couleur de fond pour le bouton */
+  color: white;
+  border-radius: 5px;
+  cursor: pointer; /* Curseur pointeur pour indiquer l'interaction */
+  transition: background-color 0.3s;
+}
+
+.filter-form button:hover {
+  background-color: #0056b3; /* Changement de couleur au survol */
+}

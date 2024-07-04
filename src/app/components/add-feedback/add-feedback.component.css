@@ -63,6 +63,7 @@ a {
     margin: 0 -2%;
     transform: rotate(-12deg) skew(-12deg);
 }
+
 .box-divider--light-all-2 {
     box-shadow: inset 0 0 0 2px #e3e8ee;
 }
@@ -115,10 +116,19 @@ a {
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
 }
 span {
+  margin: 10px;
     display: block;
     font-size: 20px;
     line-height: 28px;
     color: #1a1f36;
+}
+#starrs {
+  display: inline-block;
+  cursor: pointer;
+  line-height: 25px;
+  text-align: center;
+  width: 45px;
+
 }
 label {
     margin-bottom: 10px;

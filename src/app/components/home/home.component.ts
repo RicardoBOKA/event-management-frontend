@@ -15,10 +15,8 @@ export class HomeComponent implements OnInit {
   pastEvents: Event[] = [];
   filteredEvents: Event[] = [];
 
-  filterName: string = '';
   filterStartDate: string = '';
   filterEndDate: string = '';
-  filterLocation: string = '';
 
   constructor(private eventService: EventService, private authService: AuthService, private router:Router  ) {}
 
@@ -35,9 +33,7 @@ export class HomeComponent implements OnInit {
   applyFilters(): void {
     const filters = {
       startDate: this.filterStartDate,
-      endDate: this.filterEndDate,
-      name: this.filterName,
-      location: this.filterLocation
+      endDate: this.filterEndDate
     };
     console.log("FILTERS : ", filters);
     console.log('1');
@@ -76,6 +72,6 @@ export class HomeComponent implements OnInit {
   }
 
   redirectToLogin(): void {
-    this.router.navigate(['/login']); 
+    this.router.navigate(['/login']);
   }
 }
