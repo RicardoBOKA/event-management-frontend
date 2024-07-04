@@ -21,19 +21,23 @@ b application. The application allows users to create, manage, and participate i
    npm start
    ```
 
-[home.mp4](home.mp4)
+
 
 
 ## Features
 
 - **Create and Manage Events**: Users can create events with details such as date, time, location, and description.
+![Screencast-from-04-07-2024-13_54_47.gif](Screencast-from-04-07-2024-13_54_47.gif)
 - **Registration and Ticketing**: Attendees can register for events and purchase tickets online.
 - **Event Listings**: A comprehensive list of upcoming events with search and filter options.
+![home.gif](home.gif)
 - **Event Details**: Detailed pages for each event, including information about speakers, agenda, and sponsors.
 - **User Profiles**: Users can mahnage their profiles and view their registered events.
+![Screencast-from-04-07-2024-13_55_37.gif](Screencast-from-04-07-2024-13_55_37.gif)
 - **Interactive Maps**: Helps attendees locate event venues easily.
 - **Notifications**: Event organizers can send updates to registered attendees.
 - **Feedback and Reviews**: Collect attendee feedback to improve future events.
+![Screencast-from-04-07-2024-13_57_00.gif](Screencast-from-04-07-2024-13_57_00.gif)
 - **Responsive Design**: Accessible on various devices including desktops, tablets, and mobile phones.
 
 ![image.jpeg](image.jpeg)
