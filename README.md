@@ -1,6 +1,8 @@
-# Event Management Frontend
+# Event Management Fro
+ntend
 
-This repository contains the frontend for an event management web application. The application allows users to create, manage, and participate in events. It is built using modern web development technologies to ensure a responsive and user-friendly experience.
+This repository contains the frontend for an event management we
+b application. The application allows users to create, manage, and participate in events. It is built using modern web development technologies to ensure a responsive and user-friendly experience.
 
 
 ## Setup and Installation
@@ -18,7 +20,10 @@ This repository contains the frontend for an event management web application. T
    ```sh
    npm start
    ```
- 
+[home.webm](home.webm)
+[Screencast from 04-07-2024 13:54:47.webm](Screencast%20from%2004-07-2024%2013%3A54%3A47.webm)
+
+
 ## Features
 
 - **Create and Manage Events**: Users can create events with details such as date, time, location, and description.
