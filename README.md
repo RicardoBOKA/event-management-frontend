@@ -26,29 +26,23 @@ b application. The application allows users to create, manage, and participate i
 
 ## Features
 
-- **Create and Manage Events**: Users can create events with details such as date, time, location, and description.
+- **Creation of an event** by the user, if not logged in => Log in to create the event
 ![Screencast-from-04-07-2024-13_54_47.gif](Screencast-from-04-07-2024-13_54_47.gif)
 
-- **Registration**: Attendees can register for events.
-- **Event Listings**: A comprehensive list of upcoming events with search and filter options.
+- This is the **home page**, where you can see ongoing events and past events. You can register for ongoing events, and for past events, you can view the feedback.
 ![home.gif](home.gif)
 
-- **Event Details**: Detailed pages for each event, including information about speakers, agenda, and sponsors.
-- **User Profiles**: Users can mahnage their profiles and view their registered events.
+- **User profile**, where you can see personal information, the events you are registered for, the events you have organized, and where you can provide feedback on events you attended that have passed.
 ![Screencast-from-04-07-2024-13_55_37.gif](Screencast-from-04-07-2024-13_55_37.gif)
-- **Interactive Maps**: Helps attendees locate event venues easily.
-- **Notifications**: Event organizers can send updates to registered attendees.
-- **Feedback and Reviews**: Collect attendee feedback to improve future events.
+
+- View of the different **feedbacks** that the community has given for an event.
 ![Screencast-from-04-07-2024-13_57_00.gif](Screencast-from-04-07-2024-13_57_00.gif)
-- **Responsive Design**: Accessible on various devices including desktops, tablets, and mobile phones.
 
 ## Technologies Used
 
-- **Frontend**: React.js, HTML, CSS, JavaScript
+- **Frontend**: HTML, CSS, JavaScript, TypeScript
 - **Backend**: Node.js, Express.js
-- **Database**: MongoDB
-- **Hosting**: AWS for image storage
-- **Security**: Bcrypt for password hashing
+- **Database**: SQLServer
 - **API Testing**: Postman
 
 ## Contact
