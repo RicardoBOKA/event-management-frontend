@@ -28,9 +28,11 @@ b application. The application allows users to create, manage, and participate i
 
 - **Create and Manage Events**: Users can create events with details such as date, time, location, and description.
 ![Screencast-from-04-07-2024-13_54_47.gif](Screencast-from-04-07-2024-13_54_47.gif)
-- **Registration and Ticketing**: Attendees can register for events and purchase tickets online.
+
+- **Registration**: Attendees can register for events.
 - **Event Listings**: A comprehensive list of upcoming events with search and filter options.
 ![home.gif](home.gif)
+
 - **Event Details**: Detailed pages for each event, including information about speakers, agenda, and sponsors.
 - **User Profiles**: Users can mahnage their profiles and view their registered events.
 ![Screencast-from-04-07-2024-13_55_37.gif](Screencast-from-04-07-2024-13_55_37.gif)
