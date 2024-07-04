@@ -1,9 +1,9 @@
-# Event Management Fro
-ntend
+# Event Management Frontend
 
 This repository contains the frontend for an event management we
 b application. The application allows users to create, manage, and participate in events. It is built using modern web development technologies to ensure a responsive and user-friendly experience.
 
+Rapport : [Link text]https://docs.google.com/document/d/1dqykALyXfXUbv8nkvn7aGru-nahbKpeXsboMefi1G1I/edit
 
 ## Setup and Installation
 
