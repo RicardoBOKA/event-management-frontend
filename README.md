@@ -20,8 +20,8 @@ b application. The application allows users to create, manage, and participate i
    ```sh
    npm start
    ```
-[home.webm](home.webm)
-[Screencast from 04-07-2024 13:54:47.webm](Screencast%20from%2004-07-2024%2013%3A54%3A47.webm)
+
+[home.mp4](home.mp4)
 
 
 ## Features
