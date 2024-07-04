@@ -40,8 +40,6 @@ b application. The application allows users to create, manage, and participate i
 ![Screencast-from-04-07-2024-13_57_00.gif](Screencast-from-04-07-2024-13_57_00.gif)
 - **Responsive Design**: Accessible on various devices including desktops, tablets, and mobile phones.
 
-![image.jpeg](image.jpeg)
-
 ## Technologies Used
 
 - **Frontend**: React.js, HTML, CSS, JavaScript
