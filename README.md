@@ -40,9 +40,9 @@ Rapport : [Link text]https://docs.google.com/document/d/1dqykALyXfXUbv8nkvn7aGru
 
 ## Technologies Used
 
-- **Frontend**: HTML, CSS, JavaScript, TypeScript
-- **Backend**: Node.js, Express.js
-- **Database**: SQLServer
+- **Frontend**: Angular, TypeScript, HTML, CSS, Bootstrap
+- **Backend**: Spring Boot, Java
+- **Database**: Supabase
 - **API Testing**: Postman
 
 ## Contact
@@ -51,4 +51,4 @@ For any queries or feedback, please contact [RicardoBOKA](https://github.com/Ric
 
 ---
 
-This README provides a comprehensive overview of the project, including its features, technologies used, and instructions for setup and contribution. It ensures that users and contributors have the necessary information to get started with the project. For more details, you can visit the [repository](https://github.com/RicardoBOKA/event-management-frontend).
+This README provides a comprehensive overview of the project, including its features, technologies used, and instructions for setup and contribution.
