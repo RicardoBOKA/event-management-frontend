@@ -2,6 +2,8 @@
 /* @import "~@angular/material/prebuilt-themes/indigo-pink.css"; */
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700');
 
+/* Import Toastr styles */
+@import 'ngx-toastr/toastr';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

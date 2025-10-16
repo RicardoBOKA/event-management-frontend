@@ -1,13 +1,13 @@
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
 		<form [formGroup]="signupForm" (ngSubmit)="onSignup()">
-		  <h1>Create Account</h1>
-		  <span>Use your email for registration</span>
+		  <h1>Créer un compte</h1>
+		  <span>Utilisez votre email pour l'inscription</span>
 
 
 		  <input
 		  	type="text"
-		  	placeholder="Username"
+		  	placeholder="Nom d'utilisateur"
 		  	formControlName="name"
 			[class.is-invalid]="signupName?.invalid && signupName?.touched"
 			[class.is-valid]="signupName?.valid && signupName?.touched"
@@ -16,7 +16,7 @@
               *ngIf="signupName?.invalid && signupName?.touched"
               class="text-danger"
             >
-              <div *ngIf="signupName?.errors?.['required']">Username is required for SingUp</div>
+              {{ getSignupNameError() }}
             </div>
 
 		  
@@ -31,12 +31,12 @@
 			*ngIf="signupEmail?.invalid && signupEmail?.touched"
 			class="text-danger"
 			>
-			<div *ngIf="signupEmail?.errors?.['required']">Email is required for SingUp</div>
+			{{ getSignupEmailError() }}
 		  </div>
 		 
 		  <input
 			type="password"
-			placeholder="Password"
+			placeholder="Mot de passe (min 6 caractères)"
 			formControlName="password"
 			[class.is-invalid]="signupPassword?.invalid && signupPassword?.touched"
 			[class.is-valid]="signupPassword?.valid && signupPassword?.touched"
@@ -45,41 +45,70 @@
 				*ngIf="signupPassword?.invalid && signupPassword?.touched"
 				class="text-danger"
 				>
-				<div *ngIf="signupPassword?.errors?.['required']">Email is required for SingUp</div>
+				{{ getSignupPasswordError() }}
 			</div>
 		 
 		 
 		 
-		  <button type="submit">Sign Up</button>
+		  <button type="submit" [disabled]="isSignupLoading">
+			<span *ngIf="!isSignupLoading">S'inscrire</span>
+			<span *ngIf="isSignupLoading">Inscription en cours...</span>
+		  </button>
 		</form>
 	  </div>
 	  <div class="form-container sign-in-container">
 		<form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-		  <h1>Sign in</h1>
-		  <span>Connexion</span>
+		  <h1>Connexion</h1>
+		  <span>Connectez-vous à votre compte</span>
 
 
-		  <input type="email" placeholder="Email" formControlName="email" />
+		  <input 
+		  	type="email" 
+			placeholder="Email" 
+			formControlName="email"
+			[class.is-invalid]="loginEmail?.invalid && loginEmail?.touched"
+			[class.is-valid]="loginEmail?.valid && loginEmail?.touched"
+		  />
+		  <div
+			*ngIf="loginEmail?.invalid && loginEmail?.touched"
+			class="text-danger"
+			>
+			{{ getLoginEmailError() }}
+		  </div>
 		  
-		  <input type="password" placeholder="Password" formControlName="password" />
-		  
+		  <input 
+		  	type="password" 
+			placeholder="Mot de passe (min 6 caractères)" 
+			formControlName="password"
+			[class.is-invalid]="loginPassword?.invalid && loginPassword?.touched"
+			[class.is-valid]="loginPassword?.valid && loginPassword?.touched"
+		  />
+		  <div
+			*ngIf="loginPassword?.invalid && loginPassword?.touched"
+			class="text-danger"
+			>
+			{{ getLoginPasswordError() }}
+		  </div>
 		 
-		  <a href="#">Forgot your password? <i> => (TBD) </i></a>		 
-		  <button>Sign In</button>
+		  <a href="#">Mot de passe oublié ? <i> => (À venir) </i></a>		 
+		  <button type="submit" [disabled]="isLoginLoading">
+		  	<span *ngIf="!isLoginLoading">Se connecter</span>
+			<span *ngIf="isLoginLoading">Connexion en cours...</span>
+		  </button>
 		</form>
 	  </div>
 
 	  <div class="overlay-container">
 		<div class="overlay">
 			<div class="overlay-panel overlay-left">
-				<h1>Welcome Back!</h1>
-				<p>To keep connected with us please login with your personal info</p>
-				<button class="ghost" (click)="showSignInPanel()" id="signIn">Sign In</button>
+				<h1>Bon retour !</h1>
+				<p>Pour rester connecté avec nous, veuillez vous connecter avec vos informations personnelles</p>
+				<button class="ghost" (click)="showSignInPanel()" id="signIn">Se connecter</button>
 			</div>
 			<div class="overlay-panel overlay-right">
-				<h1>Hello, Friend!</h1>
-				<p>Enter your personal details and start journey with us</p>
-				<button class="ghost" (click)="showSignUpPanel()" id="signUp">Sign Up</button>
+				<h1>Bonjour !</h1>
+				<p>Entrez vos informations personnelles et commencez votre voyage avec nous</p>
+				<button class="ghost" (click)="showSignUpPanel()" id="signUp">S'inscrire</button>
 			</div>
 		</div> 
 </div>
